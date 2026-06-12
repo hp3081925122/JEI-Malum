@@ -1,0 +1,8 @@
+{
+  "jei_malum.category.spirit_harvest": "精魂收割",
+  "jei_malum.spirit_harvest.entity_count": "%s 种生物",
+  "jei_malum.spirit_harvest.count": "掉落：%s",
+  "jei_malum.spirit_harvest.no_spawn_eggs": "这些生物没有刷怪蛋。",
+  "jei_malum.spirit_harvest.more": "...以及另外 %s 种",
+  "jei_malum.spirit_harvest.default": "来自 Malum 的默认掉落"
+}

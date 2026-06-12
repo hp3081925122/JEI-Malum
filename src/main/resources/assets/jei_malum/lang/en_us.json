@@ -1,0 +1,8 @@
+{
+  "jei_malum.category.spirit_harvest": "Spirit Harvest",
+  "jei_malum.spirit_harvest.entity_count": "%s entities",
+  "jei_malum.spirit_harvest.count": "Drops: %s",
+  "jei_malum.spirit_harvest.no_spawn_eggs": "These entities do not have spawn eggs.",
+  "jei_malum.spirit_harvest.more": "...and %s more",
+  "jei_malum.spirit_harvest.default": "Default fallback from Malum"
+}
