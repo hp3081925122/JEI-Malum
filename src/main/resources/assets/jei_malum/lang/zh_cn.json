@@ -4,5 +4,13 @@
   "jei_malum.spirit_harvest.count": "掉落：%s",
   "jei_malum.spirit_harvest.no_spawn_eggs": "这些生物没有刷怪蛋。",
   "jei_malum.spirit_harvest.more": "...以及另外 %s 种",
-  "jei_malum.spirit_harvest.default": "来自 Malum 的默认掉落"
+  "jei_malum.spirit_harvest.default": "来自 Malum 的默认掉落",
+  "jei_malum.spirit_harvest.soul_shatter_weapon": "使用此武器击杀生物掉落精魂",
+  "jei_malum.category.reaping_drops": "灵魂收割掉落",
+  "jei_malum.reaping_drops.entity_count": "%s 种生物",
+  "jei_malum.reaping_drops.count": "数量：%s-%s",
+  "jei_malum.reaping_drops.chance": "概率：%s%%",
+  "jei_malum.reaping_drops.no_spawn_eggs": "这些生物没有刷怪蛋。",
+  "jei_malum.reaping_drops.soul_shatter_weapon": "使用此武器暴露灵魂并击杀生物掉落收割物",
+  "jei_malum.soul_shatter_weapon.accepted_tag": "接受标签："
 }

@@ -4,5 +4,13 @@
   "jei_malum.spirit_harvest.count": "Drops: %s",
   "jei_malum.spirit_harvest.no_spawn_eggs": "These entities do not have spawn eggs.",
   "jei_malum.spirit_harvest.more": "...and %s more",
-  "jei_malum.spirit_harvest.default": "Default fallback from Malum"
+  "jei_malum.spirit_harvest.default": "Default fallback from Malum",
+  "jei_malum.spirit_harvest.soul_shatter_weapon": "Kill entities with this weapon to drop spirits",
+  "jei_malum.category.reaping_drops": "Soul Reaping Drops",
+  "jei_malum.reaping_drops.entity_count": "%s entities",
+  "jei_malum.reaping_drops.count": "Amount: %s-%s",
+  "jei_malum.reaping_drops.chance": "Chance: %s%%",
+  "jei_malum.reaping_drops.no_spawn_eggs": "These entities do not have spawn eggs.",
+  "jei_malum.reaping_drops.soul_shatter_weapon": "Expose and kill entities with this weapon to drop reaping items",
+  "jei_malum.soul_shatter_weapon.accepted_tag": "Accepted tag:"
 }

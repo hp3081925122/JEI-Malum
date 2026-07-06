@@ -71,7 +71,10 @@ public class SpiritHarvestCategory implements IRecipeCategory<SpiritHarvestRecip
                 .addItemStack(recipe.spiritStack())
                 .addRichTooltipCallback((slotView, tooltip) -> tooltip.add(Component.translatable("jei_malum.spirit_harvest.entity_count", recipe.entries().size()).withStyle(ChatFormatting.GRAY)));
 
-        builder.addInvisibleIngredients(RecipeIngredientRole.CATALYST).addItemStack(recipe.spiritStack());
+        if (SoulShatterWeaponSlots.hasWeapons()) {
+            IRecipeSlotBuilder weaponSlot = builder.addSlot(RecipeIngredientRole.CATALYST, SoulShatterWeaponSlots.WEAPON_X, SoulShatterWeaponSlots.WEAPON_Y);
+            SoulShatterWeaponSlots.addWeaponSlot(weaponSlot, "jei_malum.spirit_harvest.soul_shatter_weapon");
+        }
 
         for (int i = 0; i < recipe.entries().size(); i++) {
             SpiritDropEntry entry = recipe.entries().get(i);

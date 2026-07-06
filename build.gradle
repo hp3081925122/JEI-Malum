@@ -21,6 +21,21 @@ repositories {
             includeGroup 'top.theillusivec4.curios'
         }
     }
+    maven {
+        name = 'Latvian Maven'
+        url = 'https://maven.latvian.dev/releases'
+        content {
+            includeGroup 'dev.latvian.mods'
+            includeGroup 'dev.latvian.apps'
+        }
+    }
+    maven {
+        name = 'JitPack'
+        url = 'https://jitpack.io'
+        content {
+            includeGroup 'com.github.rtyley'
+        }
+    }
 }
 
 base {
