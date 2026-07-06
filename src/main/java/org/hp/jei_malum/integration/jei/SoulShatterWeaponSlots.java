@@ -15,7 +15,7 @@ import java.util.List;
 final class SoulShatterWeaponSlots {
     static final int WEAPON_X = 144;
     static final int WEAPON_Y = 8;
-    private static final TagKey<Item> SOUL_SHATTER_WEAPONS = TagKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath("malum", "soul_shatter_capable_weapon"));
+    private static final TagKey<Item> SOUL_SHATTER_WEAPONS = TagKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath("malum", "soul_hunter_weapon"));
 
     private SoulShatterWeaponSlots() {
     }
@@ -24,17 +24,13 @@ final class SoulShatterWeaponSlots {
         slot.setStandardSlotBackground()
                 .addItemStacks(getSoulShatterWeapons())
                 .addRichTooltipCallback((slotView, tooltip) -> {
-                    var tagComponents = tooltip.getLines().stream()
-                            .filter(line -> line.right().isPresent())
-                            .toList();
-                    tooltip.clear();
+                    tooltip.removeAll(tooltip.toLegacyToComponents());
                     slotView.getDisplayedItemStack()
                             .map(ItemStack::getHoverName)
                             .ifPresent(tooltip::add);
                     tooltip.add(Component.translatable(tooltipKey).withStyle(ChatFormatting.GRAY));
                     tooltip.add(Component.translatable("jei_malum.soul_shatter_weapon.accepted_tag").withStyle(ChatFormatting.GRAY));
-                    tooltip.add(Component.literal("#malum:soul_shatter_capable_weapon").withStyle(ChatFormatting.GRAY));
-                    tooltip.getLines().addAll(tagComponents);
+                    tooltip.add(Component.literal("#malum:soul_hunter_weapon").withStyle(ChatFormatting.GRAY));
                 });
     }
 
@@ -51,3 +47,5 @@ final class SoulShatterWeaponSlots {
                 .toList();
     }
 }
+
+

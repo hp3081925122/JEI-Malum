@@ -21,3 +21,6 @@ hs_err_pid*
 run
 .vscode/
 .gitignore
+
+# Local development mod jars
+libs/*.jar

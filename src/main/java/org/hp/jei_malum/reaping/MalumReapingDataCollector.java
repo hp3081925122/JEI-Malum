@@ -3,7 +3,6 @@ package org.hp.jei_malum.reaping;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.serialization.JsonOps;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -150,7 +149,7 @@ public final class MalumReapingDataCollector {
                 continue;
             }
 
-            Ingredient ingredient = Ingredient.CODEC.parse(JsonOps.INSTANCE, dropObject.get("ingredient")).getOrThrow();
+            Ingredient ingredient = Ingredient.fromJson(dropObject.get("ingredient"));
             float chance = dropObject.has("chance") ? dropObject.getAsJsonPrimitive("chance").getAsFloat() : 1F;
             int min = dropObject.has("min") ? dropObject.getAsJsonPrimitive("min").getAsInt() : 1;
             int max = dropObject.has("max") ? dropObject.getAsJsonPrimitive("max").getAsInt() : Math.max(min, 1);

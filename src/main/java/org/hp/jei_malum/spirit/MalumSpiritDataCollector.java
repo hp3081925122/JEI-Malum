@@ -281,3 +281,5 @@ public final class MalumSpiritDataCollector {
     private record ParsedSpiritStack(ResourceLocation spiritType, int count) {
     }
 }
+
+
