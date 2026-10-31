@@ -16,6 +16,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import org.hp.jei_malum.reaping.ReapingDropEntry;
 import org.hp.jei_malum.reaping.ReapingDropsRecipe;
@@ -27,20 +28,23 @@ import java.util.List;
 public class ReapingDropsCategory implements IRecipeCategory<ReapingDropsRecipe> {
     public static final RecipeType<ReapingDropsRecipe> RECIPE_TYPE = RecipeType.create(JeiMalumPlugin.UID.getNamespace(), "reaping_drops", ReapingDropsRecipe.class);
     private static final int WIDTH = 172;
-    private static final int HEIGHT = 136;
+    private static final int BOTTOM_MARGIN = 12;
+    private static final int TEXT_X = 38;
+    private static final int TEXT_Y = 13;
+    private static final int TEXT_MAX_WIDTH = SoulShatterWeaponSlots.WEAPON_X - TEXT_X - 4;
+    private static final int TEXT_LINE_HEIGHT = 9;
+    private static final int TEXT_MAX_LINES = 2;
     private static final int DROP_X = 8;
     private static final int DROP_Y = 8;
     private static final int GRID_X = 8;
     private static final int GRID_Y = 34;
     private static final int GRID_COLUMNS = 8;
-    private static final int GRID_VISIBLE_ROWS = 5;
+    private static final int MAX_VISIBLE_ROWS = 5;
     private static final String ENTITY_SLOT_PREFIX = "reaping_entity_";
 
-    private final IDrawable background;
     private final IDrawable icon;
 
     public ReapingDropsCategory(IGuiHelper guiHelper, ItemStack iconStack) {
-        this.background = guiHelper.createBlankDrawable(WIDTH, HEIGHT);
         this.icon = guiHelper.createDrawableItemStack(iconStack);
     }
 
@@ -55,8 +59,13 @@ public class ReapingDropsCategory implements IRecipeCategory<ReapingDropsRecipe>
     }
 
     @Override
-    public @Nullable IDrawable getBackground() {
-        return background;
+    public int getWidth() {
+        return WIDTH;
+    }
+
+    @Override
+    public int getHeight() {
+        return GRID_Y + getVisibleRows() * 18 + BOTTOM_MARGIN;
     }
 
     @Override
@@ -101,7 +110,7 @@ public class ReapingDropsCategory implements IRecipeCategory<ReapingDropsRecipe>
             builder.getRecipeSlots().findSlotByName(ENTITY_SLOT_PREFIX + i).ifPresent(entitySlots::add);
         }
         if (!entitySlots.isEmpty()) {
-            builder.addScrollGridWidget(entitySlots, GRID_COLUMNS, GRID_VISIBLE_ROWS)
+            builder.addScrollGridWidget(entitySlots, GRID_COLUMNS, getVisibleRows())
                     .setPosition(GRID_X, GRID_Y);
         }
     }
@@ -109,10 +118,17 @@ public class ReapingDropsCategory implements IRecipeCategory<ReapingDropsRecipe>
     @Override
     public void draw(ReapingDropsRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         Font font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font, Component.translatable("jei_malum.reaping_drops.entity_count", recipe.entries().size()), 38, 13, 0xFF404040, false);
+        List<FormattedCharSequence> lines = font.split(Component.translatable("jei_malum.reaping_drops.entity_count", recipe.entries().size()), TEXT_MAX_WIDTH);
+        for (int i = 0; i < Math.min(lines.size(), TEXT_MAX_LINES); i++) {
+            guiGraphics.drawString(font, lines.get(i), TEXT_X, TEXT_Y + i * TEXT_LINE_HEIGHT, 0xFF404040, false);
+        }
         if (recipe.entries().stream().allMatch(entry -> entry.spawnEggs().isEmpty())) {
             guiGraphics.drawWordWrap(font, Component.translatable("jei_malum.reaping_drops.no_spawn_eggs").withStyle(ChatFormatting.GRAY), GRID_X, GRID_Y + 4, WIDTH - GRID_X * 2, 0xFF707070);
         }
+    }
+
+    private static int getVisibleRows() {
+        return JeiLayoutHelper.fitRows(GRID_Y + BOTTOM_MARGIN, MAX_VISIBLE_ROWS);
     }
 
     @Override

@@ -80,12 +80,13 @@ dependencies {
 
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
-    compileOnly fg.deobf("local:malum:${malum_version}")
-    runtimeOnly fg.deobf("local:malum:${malum_version}")
-    runtimeOnly fg.deobf("local:lodestone:${lodestone_version}")
-    runtimeOnly fg.deobf("local:curios-forge:${curios_version}")
+    compileOnly fg.deobf("curse.maven:malum-484064:6646111")
+    runtimeOnly fg.deobf("curse.maven:malum-484064:6646111")
+    runtimeOnly fg.deobf("curse.maven:lodestone-616457:6213794")
+    runtimeOnly fg.deobf("curse.maven:curios-309927:6418456")
 }
 
 tasks.named('processResources', ProcessResources).configure {
